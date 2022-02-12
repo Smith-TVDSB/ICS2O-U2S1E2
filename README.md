@@ -2,6 +2,7 @@
 
 ### The assignment
 Edit the file named "student.py".  
+You should only use one print statement, otherwise use the input statement for user instructions.  
 Take in the user's age then outputs a message saying that they are older enough to vote:   
  
 #### Input
