@@ -3,7 +3,7 @@ import student
 
 
 
-def test_lower():
+def test_lower(capsys):
     input_values=['3']
     output=[]
 
@@ -16,13 +16,12 @@ def test_lower():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "false" in output[1].lower()
+    out, err = capsys.readouterr()
+    assert "false" in out[-8:].lower()
 
-def test_exact():
+def test_exact(capsys):
     input_values=['18']
     output=[]
 
@@ -35,13 +34,12 @@ def test_exact():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "true" in output[1].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
 
-def test_lower_17():
+def test_lower_17(capsys):
     input_values=['17']
     output=[]
 
@@ -54,13 +52,12 @@ def test_lower_17():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "false" in output[1].lower()
-
-def test_higher():
+    out, err = capsys.readouterr()
+    assert "false" in out[-8:].lower()
+    
+def test_higher(capsys):
     input_values=['80']
     output=[]
 
@@ -73,16 +70,8 @@ def test_higher():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "true" in output[1].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
 
-#Standard test output ONLY (no input)
-#No need for the if __name__ condition in the main code, but might as well when done so students get used to it.
-"""def test_hello(capsys):
-    import hello
-    out,err = capsys.readouterr()
-    assert out == "Hello world!\n" or "bye" in out, "Should read 'Hello world!' "
-"""
